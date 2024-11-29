@@ -16,7 +16,6 @@
   padding: 2vmax;
   box-sizing: border-box;
   border: 1px solid white;
-  background-color: aqua;
 }
 
 .ProductDetails > div:last-child {
