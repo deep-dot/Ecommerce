@@ -1,0 +1,121 @@
+[
+    {
+        "name": "Stylish Summer Dress",
+        "description": "A beautiful and comfortable summer dress made from high-quality materials. Perfect for a day out or a special occasion.",
+        "price": 75,
+        "ratings": 4.5,
+        "images": [
+            {
+                "public_id": "stylish_summer_dress_1",
+                "url": "https://example.com/images/stylish_summer_dress_1.jpg"
+            },
+            {
+                "public_id": "stylish_summer_dress_2",
+                "url": "https://example.com/images/stylish_summer_dress_2.jpg"
+            },
+            {
+                "public_id": "stylish_summer_dress_3",
+                "url": "https://example.com/images/stylish_summer_dress_3.jpg"
+            }
+        ],
+        "category": "Dresses",
+        "Stock": 20,
+        "numOfReviews": 10,
+        "reviews": [
+            {
+                "user": "60efc912cc60a84e90b01573",
+                "name": "Jane Doe",
+                "rating": 5,
+                "comment": "I absolutely love this dress! The material is great and the fit is perfect."
+            },
+            {
+                "user": "60efc912cc60a84e90b01574",
+                "name": "John Smith",
+                "rating": 4,
+                "comment": "My wife loved the dress. The quality is good, but the shipping took longer than expected."
+            }
+        ],
+        "user": "60efc912cc60a84e90b01575",
+        "createdAt": "2023-05-01T12:00:00.000Z",
+        "taxOnOrder": 5,
+        "shippingPriceOnOrder": 10
+    },
+    {
+        "name": "Elegant Silk Scarf",
+        "description": "A luxurious silk scarf featuring an exclusive design. Add a touch of elegance to any outfit with this stunning accessory.",
+        "price": 50,
+        "ratings": 4.7,
+        "images": [
+            {
+                "public_id": "elegant_silk_scarf_1",
+                "url": "https://example.com/images/elegant_silk_scarf_1.jpg"
+            },
+            {
+                "public_id": "elegant_silk_scarf_2",
+                "url": "https://example.com/images/elegant_silk_scarf_2.jpg"
+            }
+        ],
+        "category": "Accessories",
+        "Stock": 30,
+        "numOfReviews": 8,
+        "reviews": [
+            {
+                "user": "60efc912cc60a84e90b01576",
+                "name": "Alice Johnson",
+                "rating": 5,
+                "comment": "The silk scarf is absolutely stunning! The quality is top-notch and the design is so unique."
+            },
+            {
+                "user": "60efc912cc60a84e90b01577",
+                "name": "Bob Martin",
+                "rating": 4,
+                "comment": "I bought this scarf for my wife, and she loves it. A bit pricey, but worth it for the quality."
+            }
+        ],
+        "user": "60efc912cc60a84e90b01578",
+        "createdAt": "2023-05-01T12:30:00.000Z",
+        "taxOnOrder": 4,
+        "shippingPriceOnOrder": 8
+    },
+    {
+        "name": "Chic Leather Handbag",
+        "description": "A versatile leather handbag that is both stylish and practical. With its spacious compartments and sleek design, it's perfect for everyday use or special occasions.",
+        "price": 120,
+        "ratings": 4.8,
+        "images": [
+            {
+                "public_id": "chic_leather_handbag_1",
+                "url": "https://example.com/images/chic_leather_handbag_1.jpg"
+            },
+            {
+                "public_id": "chic_leather_handbag_2",
+                "url": "https://example.com/images/chic_leather_handbag_2.jpg"
+            },
+            {
+                "public_id": "chic_leather_handbag_3",
+                "url": "https://example.com/images/chic_leather_handbag_3.jpg"
+            }
+        ],
+        "category": "Handbags",
+        "Stock": 15,
+        "numOfReviews": 12,
+        "reviews": [
+            {
+                "user": "60efc912cc60a84e90b01579",
+                "name": "Cathy Brown",
+                "rating": 5,
+                "comment": "This handbag is fantastic! The leather is high-quality and the design is so chic. I get compliments everywhere I go!"
+            },
+            {
+                "user": "60efc912cc60a84e90b0157a",
+                "name": "David Clark",
+                "rating": 4,
+                "comment": "Bought this handbag for my girlfriend, and she loves it. A bit expensive, but the quality is outstanding."
+            }
+        ],
+        "user": "60efc912cc60a84e90b0157b",
+        "createdAt": "2023-05-01T13:00:00.000Z",
+        "taxOnOrder": 6,
+        "shippingPriceOnOrder": 12
+    }
+]
