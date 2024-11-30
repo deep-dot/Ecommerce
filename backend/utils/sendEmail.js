@@ -10,8 +10,8 @@ const transporter = nodemailer.createTransport({
   port: process.env.SMTP_PORT || 587,
   secure: false, // Use STARTTLS for port 587
   auth: {
-    user: process.env.SMTP_MAIL || 'dhillonkuldeep30@gmail.com',
-    pass: process.env.GOOGLE_PASS || 'bwfm zinn kytj civs',
+    user: process.env.SMTP_MAIL,
+    pass: process.env.GOOGLE_PASS,
   },
 });
 
