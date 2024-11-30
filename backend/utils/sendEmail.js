@@ -2,11 +2,12 @@ const path = require('path');
 require('dotenv').config({ path: path.resolve(__dirname, '../config.env') });
 const nodemailer = require('nodemailer');
 
+console.log('smtp port==-=', process.env.SMTP_PORT)
 const transporter = nodemailer.createTransport({
   host:process.env.SMTP_HOST,
   port: process.env.SMTP_PORT,
-  // secure: process.env.SMTP_PORT == 465,
-  secure: true,
+  secure: process.env.SMTP_PORT == 465,
+  // secure: false,
   auth: {
     user: process.env.SMTP_MAIL,
     pass: process.env.GOOGLE_PASS,
