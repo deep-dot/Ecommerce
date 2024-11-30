@@ -3,6 +3,8 @@ if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config({ path: path.resolve(__dirname, '../config.env') });
 }
 const nodemailer = require('nodemailer');
+const config = require('../config/config.js');
+const env = process.env.NODE_ENV || 'development';
 
 console.log('smtp port==-=', process.env.SMTP_PORT)
 const transporter = nodemailer.createTransport({
@@ -11,6 +13,7 @@ const transporter = nodemailer.createTransport({
   secure: false, // Use STARTTLS for port 587
   auth: {
     user: process.env.SMTP_MAIL,
+    // user: config.smtpEmail[env],
     pass: process.env.GOOGLE_PASS,
   },
 });

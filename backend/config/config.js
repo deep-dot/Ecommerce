@@ -27,4 +27,20 @@ module.exports = {
     development: process.env.FB_CALLBACK_URL_DEV,
     production: process.env.FB_CALLBACK_URL_PROD
   }
+  // smtpEmail: {
+  //   development: process.env.SMTP_MAIL,
+  //   production:  process.env.SMTP_MAIL_PROD,
+  // },
+  // smtpPort: {
+  //   development: SMTP_PORT,
+  //   production: SMTP_PORT_PROD,
+  // },
+  // emailPass: {
+  //   development: GOOGLE_PASS,
+  //   production: GOOGLE_PASS_PROD,
+  // },
+  // smtpHost: {
+  //   development: SMTP_HOST,
+  //   production: SMTP_HOST_PROD,
+  // }
 };
