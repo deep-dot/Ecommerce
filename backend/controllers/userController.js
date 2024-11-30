@@ -4,6 +4,9 @@ const User = require("../models/userModel");
 const sendToken = require("../utils/jwtToken");
 const sendEmail = require("../utils/sendEmail");
 const crypto = require("crypto");
+const config = require('../config/config.js');
+const env = process.env.NODE_ENV || 'development';
+
 
 // Register a User
 exports.registerUser = catchAsyncErrors(async (req, res, next) => {
@@ -82,8 +85,9 @@ exports.forgotPassword = catchAsyncErrors(async (req, res, next) => {
   await user.save({ validateBeforeSave: false });
   
   // Example for development environment
-const frontendUrl = "http://localhost:4000";
-const resetPasswordUrl = `${frontendUrl}/password/reset/${resetToken}`;
+  const url = config.urls[env]
+// const frontendUrl = "http://localhost:4000";
+const resetPasswordUrl = `${url}/password/reset/${resetToken}`;
 
   //const resetPasswordUrl = `${req.protocol}://${req.get("host")}/password/reset/${resetToken}`;  
 
