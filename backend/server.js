@@ -18,7 +18,7 @@ process.on("uncaughtException", (err) => {
 
 // Config
 if (process.env.NODE_ENV === "development") {
-  require("dotenv").config({ path: "backend/config/config.env" });
+  require("dotenv").config({ path: "backend/config.env" });
 }
 
 // Connecting to database
@@ -32,22 +32,23 @@ connectDatabase();
 //console.log('process.env.CLOUDINARY_NAME',process.env.CLOUDINARY_NAME);
 
 const server = app.listen(process.env.PORT || 3001, () => {
-  const url = config.urls[process.env.NODE_ENV || 'development'];
-  if (url) {
+  const urlArray = config.urls[env]; // Get the URLs array for the current environment
+  if (urlArray && urlArray.length > 0) {
     if (process.env.NODE_ENV === 'development') {
-      if (Array.isArray(url)) {
-        url.forEach((urlItem) => console.log(`listening on ${urlItem}:${process.env.PORT}`));
-      } else {
-        console.log(`listening on ${url}`);
-      }
+      // Log all development URLs
+      urlArray.forEach((urlItem) =>
+        console.log(`Listening on ${urlItem}:${process.env.PORT || 3001}`)
+      );
     } else {
-      console.log(`listening on ${url}`);
+      // Log the first production URL
+      const url = urlArray[0];
+      console.log(`Listening on ${url}:${process.env.PORT || 3001}`);
     }
   } else {
-    console.error('Failed to retrieve URL from config file');
+    console.error('Failed to retrieve URL(s) from config file. Please check your configuration.');
   }
-  //console.log(config.google_url[env], config.fb_url[env])
 });
+
 
 // Unhandled Promise Rejection
 process.on("unhandledRejection", (err) => {

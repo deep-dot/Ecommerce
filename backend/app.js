@@ -9,7 +9,7 @@ const errorMiddleware = require("./middleware/error");
 
 // Config
 if (process.env.NODE_ENV === "development") {
-  require("dotenv").config({ path: "backend/config/config.env" });
+  require("dotenv").config({ path: "backend/config.env" });
 }
 
 app.use(express.json());
