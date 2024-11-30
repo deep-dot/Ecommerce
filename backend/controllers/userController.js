@@ -81,7 +81,7 @@ exports.forgotPassword = catchAsyncErrors(async (req, res, next) => {
   
   // Get ResetPassword Token
  const resetToken = user.getResetPasswordToken();
- console.log('forgot password bac ====', req.body, resetToken);
+// console.log('forgot password bac ====', req.body, resetToken);
   await user.save({ validateBeforeSave: false });
   
   // Example for development environment
