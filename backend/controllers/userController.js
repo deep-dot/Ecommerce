@@ -85,9 +85,9 @@ exports.forgotPassword = catchAsyncErrors(async (req, res, next) => {
   await user.save({ validateBeforeSave: false });
   
   // Example for development environment
-  const url = config.urls[env]
+  const baseUrl = config.urls[env]?.[0]; // Safely access the first URL
 // const frontendUrl = "http://localhost:4000";
-const resetPasswordUrl = `${url}/password/reset/${resetToken}`;
+const resetPasswordUrl = `${baseUrl}/password/reset/${resetToken}`;
 
   //const resetPasswordUrl = `${req.protocol}://${req.get("host")}/password/reset/${resetToken}`;  
 
