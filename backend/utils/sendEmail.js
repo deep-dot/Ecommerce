@@ -1,5 +1,7 @@
 const path = require('path');
-require('dotenv').config({ path: path.resolve(__dirname, '../config.env') });
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config({ path: path.resolve(__dirname, '../config.env') });
+}
 const nodemailer = require('nodemailer');
 
 console.log('smtp port==-=', process.env.SMTP_PORT)
