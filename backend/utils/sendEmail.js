@@ -1,28 +1,14 @@
-const path = require('path');
-if (process.env.NODE_ENV !== 'production') {
-  require('dotenv').config({ path: path.resolve(__dirname, '../config.env') });
-}
-const nodemailer = require('nodemailer');
-const config = require('../config/config.js');
-const env = process.env.NODE_ENV || 'development';
 
-console.log('smtp port==-=', config.smtpPort[env])
+const nodemailer = require('nodemailer');
+
+console.log('in sendEmail js', process.env.NODE_ENV );
 const transporter = nodemailer.createTransport({
-  // host: process.env.SMTP_HOST || 'smtp.gmail.com',
-  // port: process.env.SMTP_PORT || 587,
-  // secure: false, // Use STARTTLS for port 587
-  // auth: {
-  //   user: process.env.SMTP_MAIL,
-  //   // user: config.smtpEmail[env],
-  //   pass: process.env.GOOGLE_PASS,
-  // },
-  host: config.smtpHost[env],
-  port: config.smtpPort[env],
-  secure: false, // Use STARTTLS for port 587
+  host: process.env.SMTP_HOST,
+  port: process.env.SMTP_PORT || 587,
+  secure: process.env.SMTP_PORT == 587,
   auth: {
-    user: config.smtpEmail[env],
-    // user: config.smtpEmail[env],
-    pass: config.emailPass[env],
+    user: process.env.SMTP_MAIL,
+    pass: process.env.GOOGLE_PASS,
   },
 });
 

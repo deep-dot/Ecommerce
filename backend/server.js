@@ -3,7 +3,8 @@ const app = require("./app");
 const cloudinary = require('cloudinary').v2;
 const connectDatabase = require("./config/database");
 const config = require('./config/config');
-const env = process.env.NODE_ENV || 'development';
+
+console.log('in server js', process.env.NODE_ENV );
 
 // Handling Uncaught Exception
 process.on("uncaughtException", (err) => {
@@ -16,11 +17,6 @@ process.on("uncaughtException", (err) => {
   process.exit(1);
 });
 
-// Config
-if (process.env.NODE_ENV === "development") {
-  require("dotenv").config({ path: "backend/config.env" });
-}
-
 // Connecting to database
 connectDatabase();
 
@@ -32,7 +28,7 @@ connectDatabase();
 //console.log('process.env.CLOUDINARY_NAME',process.env.CLOUDINARY_NAME);
 
 const server = app.listen(process.env.PORT || 3001, () => {
-  const urlArray = config.urls[env]; // Get the URLs array for the current environment
+  const urlArray = config.urls[process.env.NODE_ENV]; // Get the URLs array for the current environment
   if (urlArray && urlArray.length > 0) {
     if (process.env.NODE_ENV === 'development') {
       // Log all development URLs
