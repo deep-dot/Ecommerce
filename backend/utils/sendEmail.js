@@ -4,8 +4,8 @@ const nodemailer = require('nodemailer');
 console.log('in sendEmail js', process.env.NODE_ENV );
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST,
-  port: process.env.SMTP_PORT || 587,
-  secure: process.env.SMTP_PORT == 587,
+  port: process.env.SMTP_PORT,
+  secure: process.env.SMTP_PORT == 465,
   auth: {
     user: process.env.SMTP_MAIL,
     pass: process.env.GOOGLE_PASS,

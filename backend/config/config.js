@@ -1,6 +1,7 @@
 
 
 console.log('in config js', process.env.NODE_ENV );
+
 module.exports = {
   urls: {
     development: [
@@ -13,10 +14,10 @@ module.exports = {
     // development: process.env.DEV_HOST1,
     // production: process.env.PROD_HOST,
   },
-  // db_url: {
-  //   development: process.env.DB_URI_DEV,
-  //   production: process.env.DB_URI_PROD,
-  // },
+  db_url: {
+    development: process.env.DB_URI_DEV,
+    production: process.env.DB_URI_PROD,
+  },
   // google_url: {
   //   development: process.env.GOOGLE_CALLBACK_URL_DEV,
   //   production: process.env.GOOGLE_CALLBACK_URL_PROD
