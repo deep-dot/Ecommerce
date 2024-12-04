@@ -6,23 +6,15 @@ const nodemailer = require('nodemailer');
 const config = require('../config/config.js');
 const env = process.env.NODE_ENV || 'development';
 
-console.log('smtp port==-=', config.smtpPort[env])
+console.log('smtp port==-=', process.env.SMTP_PORT)
 const transporter = nodemailer.createTransport({
-  // host: process.env.SMTP_HOST || 'smtp.gmail.com',
-  // port: process.env.SMTP_PORT || 587,
-  // secure: false, // Use STARTTLS for port 587
-  // auth: {
-  //   user: process.env.SMTP_MAIL,
-  //   // user: config.smtpEmail[env],
-  //   pass: process.env.GOOGLE_PASS,
-  // },
-  host: config.smtpHost[env],
-  port: config.smtpPort[env],
+  host: process.env.SMTP_HOST || 'smtp.gmail.com',
+  port: process.env.SMTP_PORT || 587,
   secure: false, // Use STARTTLS for port 587
   auth: {
-    user: config.smtpEmail[env],
+    user: process.env.SMTP_MAIL,
     // user: config.smtpEmail[env],
-    pass: config.emailPass[env],
+    pass: process.env.GOOGLE_PASS,
   },
 });
 
