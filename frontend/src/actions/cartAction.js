@@ -8,6 +8,7 @@ import axios from "axios";
 // Add to Cart
 export const addItemsToCart = (id, quantity, shippingPriceOnOrder, taxOnOrder) => async (dispatch, getState) => {
   const { data } = await axios.get(`/api/v1/product/${id}`);
+  console.log('in carAction.js===', taxOnOrder);
 
   if(data.product.images.length > 0) {
   dispatch({

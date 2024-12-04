@@ -10,6 +10,9 @@ import { Link, useNavigate } from "react-router-dom";
 const Cart = () => {
   const dispatch = useDispatch();
   const { cartItems } = useSelector((state) => state.cart);
+
+  let shippingPriceOnOrder = 2, taxOnOrder = 5;
+
   const navigate = useNavigate();
 
   console.log('cartitems in cart===',cartItems.length)
@@ -18,7 +21,8 @@ const Cart = () => {
     if (stock <= quantity) {
       return;
     }
-    dispatch(addItemsToCart(id, newQty));
+    // dispatch(addItemsToCart(id, newQty));
+    dispatch(addItemsToCart(id, newQty, shippingPriceOnOrder, taxOnOrder));
   };
 
   const decreaseQuantity = (id, quantity) => {
@@ -26,7 +30,8 @@ const Cart = () => {
     if (1 >= quantity) {
       return;
     }
-    dispatch(addItemsToCart(id, newQty));
+    
+    dispatch(addItemsToCart(id, newQty, shippingPriceOnOrder, taxOnOrder));
   };
 
   const deleteCartItems = (id) => {

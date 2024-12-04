@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment } from "react";
 import CheckoutSteps from "../Cart/CheckoutSteps";
 import { useSelector } from "react-redux";
 import MetaData from "../layout/MetaData";
@@ -11,22 +11,24 @@ const ConfirmOrder = () => {
   const { user } = useSelector((state) => state.user);
   const navigate = useNavigate();
   //const [shippingCharges, setShippingCharges] = useState(0);
-  var shippingCharges = 0;
-  var tax = 0;
+  // let shippingCharges = 0;
+  // let tax = 0;
 
   const subtotal = cartItems.reduce(
     (acc, item) => acc + item.quantity * item.price,
     0
   );
+  const shippingCharges = subtotal > 1000 ? 0 : 200;
+  let tax = subtotal * 0.10;
 
-   //const shippingCharges = subtotal > 1000 ? 0 : 200;
-   for(let i = 0; i < cartItems.length; i++){
-   shippingCharges = subtotal > cartItems[i].shippingPriceOnOrder ? 0 : 200;
-   tax = subtotal * cartItems[i].taxOnOrder;
-   }
+  console.log('subtotal in confirmOrder js==', subtotal);   
+  //  for(let i = 0; i < cartItems.length; i++){
+  //   shippingCharges = subtotal > cartItems[i].shippingPriceOnOrder ? 0 : 200;
+  //  tax = subtotal * cartItems[i].taxOnOrder;
+  // //  console.log("tax on order: ", subt);
+  //  }
   // const shippingCharges = subtotal > cartItems[0].shippingPriceOnOrder ? 0 : 200;
 
-  console.log("tax on order: ", cartItems[0].taxOnOrder);
   //console.log("shipping charges: " + shippingPriceOnOrder);
    //const tax = subtotal * 0.18;
   // const tax = subtotal * cartItems[0].taxOnOrder;
@@ -105,7 +107,7 @@ const ConfirmOrder = () => {
               </div>
               <div>
                 <p>GST:</p>
-                <span>${tax}</span>
+                <span>${tax.toFixed(2)}</span>
               </div>
             </div>
 
