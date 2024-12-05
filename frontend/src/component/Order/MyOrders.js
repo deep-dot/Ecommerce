@@ -18,6 +18,8 @@ const MyOrders = () => {
   const { loading, error, orders } = useSelector((state) => state.myOrders);
   const { user } = useSelector((state) => state.user);
 
+  // console.log("Row ID:", params.row.id);
+
   const columns = [
     { field: "id", headerName: "Order ID", minWidth: 300, flex: 1 },
 
@@ -57,9 +59,9 @@ const MyOrders = () => {
       sortable: false,
       renderCell: (params) => {
         return (
-          <Link to={`/order/${params.row.id}`}>
-            <LaunchIcon />
-          </Link>
+            <Link to={`/order/${params.row.id}`}>
+              <LaunchIcon />
+            </Link>
         );
       },
     },
@@ -87,7 +89,7 @@ const MyOrders = () => {
 
   return (
     <Fragment>
-      {/* <MetaData title={`${user.name} - Orders`} /> */}
+      <MetaData title={`${user.name} - Orders`} />
 
       {loading ? (
         <Loader />

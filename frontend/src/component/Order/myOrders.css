@@ -4,10 +4,10 @@
   padding: 0 7vmax;
   box-sizing: border-box;
   background-color: rgb(235, 235, 235);
-  position: fixed;
-  top: 0;
+  /* position: fixed; */
+  top: calc(var(--navheight) * 2);
   left: 0;
-  height: 100vh;
+  height: auto;
   display: flex;
   flex-direction: column;
 }

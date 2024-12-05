@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 import MetaData from "../layout/MetaData";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Typography } from '@mui/material';
 import SideBar from "./Sidebar";
 import {
@@ -20,6 +20,7 @@ const ProcessOrder = ({ match }) => {
   const { order, error, loading } = useSelector((state) => state.orderDetails);
   const { error: updateError, isUpdated } = useSelector((state) => state.order);
   const { cartItems } = useSelector((state) => state.cart);
+  const { id } = useParams();
 
   const subtotal = cartItems.reduce(
     (acc, item) => acc + item.quantity * item.price,
@@ -39,7 +40,7 @@ const ProcessOrder = ({ match }) => {
 
     myForm.set("status", status);
 
-    dispatch(updateOrder(match.params.id, myForm));
+    dispatch(updateOrder(id, myForm));
   };
 
   const dispatch = useDispatch();
@@ -61,8 +62,8 @@ const ProcessOrder = ({ match }) => {
       dispatch({ type: UPDATE_ORDER_RESET });
     }
 
-    dispatch(getOrderDetails(match.params.id));
-  }, [dispatch, alert, error, match.params.id, isUpdated, updateError]);
+    dispatch(getOrderDetails(id));
+  }, [dispatch, alert, error, id, isUpdated, updateError]);
 
   return (
     <Fragment>

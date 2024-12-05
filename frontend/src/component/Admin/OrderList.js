@@ -2,7 +2,7 @@ import React, { Fragment, useEffect } from "react";
 import { DataGrid } from '@mui/x-data-grid';
 import "./productList.css";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAlert } from "react-alert";
 import { Button } from '@mui/material';
 import MetaData from "../layout/MetaData";
@@ -16,8 +16,9 @@ import {
 } from "../../actions/orderAction";
 import { DELETE_ORDER_RESET } from "../../constants/orderConstants";
 
-const OrderList = ({ history }) => {
+const OrderList = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const alert = useAlert();
 
@@ -42,12 +43,12 @@ const OrderList = ({ history }) => {
 
     if (isDeleted) {
       alert.success("Order Deleted Successfully");
-      history.push("/admin/orders");
+      navigate("/admin/orders");
       dispatch({ type: DELETE_ORDER_RESET });
     }
 
     dispatch(getAllOrders());
-  }, [dispatch, alert, error, deleteError, history, isDeleted]);
+  }, [dispatch, alert, error, deleteError, navigate, isDeleted]);
 
   const columns = [
     { field: "id", headerName: "Order ID", minWidth: 300, flex: 1 },
@@ -58,7 +59,7 @@ const OrderList = ({ history }) => {
       minWidth: 150,
       flex: 0.5,
       cellClassName: (params) => {
-        return params.getValue(params.id, "status") === "Delivered"
+        return params.row.id === "Delivered"
           ? "greenColor"
           : "redColor";
       },
@@ -89,13 +90,13 @@ const OrderList = ({ history }) => {
       renderCell: (params) => {
         return (
           <Fragment>
-            <Link to={`/admin/order/${params.getValue(params.id, "id")}`}>
+            <Link to={`/admin/order/${params.row.id}`}>
               <EditIcon />
             </Link>
 
             <Button
               onClick={() =>
-                deleteOrderHandler(params.getValue(params.id, "id"))
+                deleteOrderHandler(params.row.id)
               }
             >
               <DeleteIcon />
