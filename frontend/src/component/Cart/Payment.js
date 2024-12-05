@@ -22,7 +22,7 @@ import { createOrder, clearErrors } from "../../actions/orderAction";
 
 const Payment = () => {
   const orderInfo = JSON.parse(sessionStorage.getItem("orderInfo"));
-  const { navigate } = useNavigate();
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
   const alert = useAlert();
@@ -36,6 +36,7 @@ const Payment = () => {
 
   const paymentData = {
     amount: Math.round(orderInfo.totalPrice * 100),
+    // amount: Math.round(orderInfo.totalPrice),
   };
 
   const order = {
@@ -66,6 +67,8 @@ const Payment = () => {
 
       const client_secret = data.client_secret;
 
+      // console.log('Client Secret:', client_secret, elements, stripe);
+
       if (!stripe || !elements) return;
 
       const result = await stripe.confirmCardPayment(client_secret, {
@@ -85,10 +88,13 @@ const Payment = () => {
         },
       });
 
+      
+
       if (result.error) {
         payBtn.current.disabled = false;
-
-        alert.error(result.error.message);
+        console.log('result error in payment.js', result);
+        // alert.error(result);
+        alert.error("There's some issue while processing payment ");
       } else {
         if (result.paymentIntent.status === "succeeded") {
           order.paymentInfo = {
@@ -105,7 +111,8 @@ const Payment = () => {
       }
     } catch (error) {
       payBtn.current.disabled = false;
-      alert.error(error.response.data.message);
+      // alert.error(error);
+      console.log(error)
     }
   };
 
