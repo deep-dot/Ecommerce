@@ -125,7 +125,7 @@ const navigate = useNavigate();
         <Fragment>
           <MetaData title={`${product.name} -- ECOMMERCE`} />
           <div className="ProductDetails">
-            <div className="CarouselContainer">
+            {/* <div className="CarouselContainer"> */}
               <Carousel>
                 {product.images &&
                   product.images.map((item, i) => (
@@ -137,7 +137,7 @@ const navigate = useNavigate();
                     />
                   ))}
               </Carousel>
-            </div>
+            {/* </div> */}
 
             <div>
               <div className="detailsBlock-1">

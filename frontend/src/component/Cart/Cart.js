@@ -10,12 +10,14 @@ import { Link, useNavigate } from "react-router-dom";
 const Cart = () => {
   const dispatch = useDispatch();
   const { cartItems } = useSelector((state) => state.cart);
+  const { user } = useSelector((state) => state.user);
 
   let shippingPriceOnOrder = 2, taxOnOrder = 5;
 
   const navigate = useNavigate();
 
-  console.log('cartitems in cart===',cartItems.length)
+  console.log('cartitems in cart===',user);
+
   const increaseQuantity = (id, quantity, stock) => {
     const newQty = quantity + 1;
     if (stock <= quantity) {
@@ -40,7 +42,7 @@ const Cart = () => {
 
   const checkoutHandler = () => {
     // navigate("/login?redirect=shipping");
-    navigate("/shipping");
+    !user ? navigate("/login") : navigate("/shipping");
   };
 
   return (
@@ -86,7 +88,7 @@ const Cart = () => {
                       +
                     </button>
                   </div>
-                  <p className="cartSubtotal">{`₹${
+                  <p className="cartSubtotal">{`$${
                     item.price * item.quantity
                   }`}</p>
                 </div>
